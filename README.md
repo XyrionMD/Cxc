@@ -1,3 +1,7 @@
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Version](https://img.shields.io/badge/Version-v1.2.7-orange)
+
 # **📔INDONESIA**
 
 hallo saya xyrion, saya membagikan alat yang mungkin akan membantu anda dalam hal seperti, download music mp3, play music, chat dengan ai menggunakan api key anda sendiri, anda bisa mengatur semua config nya di dalam file yang bernama config.py, yang berlokasi, di folder .config/ai di home komputer anda.
