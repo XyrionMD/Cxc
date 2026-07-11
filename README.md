@@ -71,3 +71,8 @@ bash install.sh
 ```bash
 python3 ai
 ```
+
+# Setting your AI Configuration
+```bash
+nano ~/.config/ai/config.py
+```
