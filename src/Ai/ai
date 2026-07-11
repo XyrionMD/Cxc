@@ -1,0 +1,98 @@
+#!/bin/python3
+import sys, time, yt_dlp, os, datetime, locale
+from pathlib import Path
+
+root_dir = Path(__file__).resolve().parent.parent
+config_dir = Path.home() / ".config" / "ai"
+sys.path.append(str(config_dir))
+
+from colors import C
+from chat import askAI
+
+
+arg = sys.argv[1:]
+
+ydl_opts = {
+    'format': 'bestaudio/best',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'mp3',
+        'preferredquality': '192',
+    }],
+    'outtmpl': '%(title)s.%(ext)s',
+}
+
+def show_help():
+    print("""
+======================================
+- ai Version 1.2.7 <==>
+======================================
+Perintah yang tersedia:
+- search [query]   : Mencari Informasi Music
+- download [query] : Mencari dan mendownload musik ke MP3
+- play [query]     : Memutar musik menggunakan mpv
+- time             : Menampil kan waktu, hari, bulan, tahun
+- chat             : membuka menu chat dengan ai
+- help / h         : Menampilkan menu bantuan ini
+          """)
+
+
+cvt = datetime.datetime.now()
+
+def show_time():
+    print("Day:", cvt.strftime("%A"))
+    print("Hours:", cvt.strftime("%H:%M:%S"))
+    print("Month:", cvt.strftime("%B %Y"))
+
+
+match arg:
+    case ["download", query]:
+        print("Please Wait...")
+        time.sleep(1)
+        with yt_dlp.YoutubeDL({'quiet': True, 'no_warnings':True}) as ydl:
+            info = ydl.extract_info(f"ytsearch1:{query}", download=False)
+            Xid = info['entries'][0]['id']
+            url = f"https://youtu.be/{Xid}"
+            xcv = info['entries'][0]['title']
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+        cmd = input("Do you want play it? [y/n]: ").lower().strip()
+        if cmd == "y":
+            os.system(f"mpv '{xcv}.mp3'")
+            
+
+    case ["play", query]:
+        os.system(f"mpv {query}")
+
+    case ["help"]:
+        show_help()
+
+    case ["h"]:
+        show_help()
+
+    case ["time"]:
+        show_time()
+
+    case ["search",query]:
+        with yt_dlp.YoutubeDL({'quiet': True, 'no_warnings':True}) as ydl:
+            info = ydl.extract_info(f"ytsearch1:{query}", download=False)
+            video = info['entries'][0]
+            nameC = video.get('uploader') 
+            duration = video.get('duration')
+            description = video.get('description')[:50]
+            xcv = info['entries'][0]['title']
+            minute, second = divmod(duration, 60)
+            print(f"{C.BLUE}Judul: {xcv}{C.RESET}")
+            print(f"{C.BLUE}Channel: {nameC}{C.RESET}")
+            print(f"{C.GREEN}Durasi Video: {minute}:{second}{C.RESET}")
+            print(f"{C.GREEN}Deskripsi singkat: {description}{C.RESET}")
+
+    case ["chat"]:
+        askAI()
+
+    case []:
+        show_help()
+
+    case _:
+        print("Command not found")
+
