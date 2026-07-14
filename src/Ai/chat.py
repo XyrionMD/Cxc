@@ -107,13 +107,17 @@ class ChatApp(App):
 
     def add_ai_msg(self, text):
         chat = self.query_one("#chat-area", ScrollableContainer)
-        row = Horizontal(classes="ai-row")
-        row.styles.width = "100%"
-        row.styles.height = "auto"
-        chat.mount(row)
+        col = Vertical(classes="ai-row")
+        col.styles.width = "100%"
+        col.styles.height = "auto"
+        chat.mount(col)
+        name_label = Static(CVT.NAME_OF_AI)
+        name_label.styles.margin = (0, 0, 0, 0)
+        name_label.styles.color = "#777777"
+        col.mount(name_label)
         bubble = ChatBubble(text, classes="ai-bubble")
         bubble.styles.margin = (0, 1, 0, 0)
-        row.mount(bubble)
+        col.mount(bubble)
         chat.scroll_end()
 
     def get_ai_response(self, msg):
