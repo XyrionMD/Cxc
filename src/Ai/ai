@@ -25,7 +25,7 @@ ydl_opts = {
 def show_help():
     print("""
 ======================================
-- ai Version 1.2.7 <==>
+- ai Version 1.2.20 <==>
 ======================================
 Perintah yang tersedia:
 - search [query]   : Mencari Informasi Music
