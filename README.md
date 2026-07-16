@@ -1,7 +1,7 @@
-# AI Tools
+# CXC
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Version](https://img.shields.io/badge/Version-v1.2.20-orange)
+![Version](https://img.shields.io/badge/Version-v1.2.25.10-orange)
 
 **📔INDONESIA**
 
@@ -63,34 +63,22 @@ For the AI section, you'll need the Gemini AI API key, as the tool I created is 
 
 # Installation
 
-**Step 1**
-
 ```bash
-git clone https://github.com/XyrionMD/AiTools.git
+pip install cxc
 ```
 
-**Step 2**
-```bash
-cd AiTools
-```
-**Step 3**
-```bash
-pip install -r requirements.txt
-```
-**Step 4**
-install mpv dan figlet melalui packages manager distro anda/install mpv and figlet via your distro's packages manager 
-
-**Step 5**
-```bash
-bash install.sh
-```
 # Operate
-**The main file, named ai, will be automatically created in the build folder. You can run it with**
-```bash
-python3 ai
-```
+- cxc help < Display the help menu 
+- cxc search < Searching for music using yt-dlp
+- cxc download < Download music according to the query you provide
+- cxc play < Play music according to the query you provide 
+- cxc chat < Open the chat menu with AI 
+- cxc list < Displays a list of available music 
+
+# Example
+cxc download "tabola bale"
 
 # Setting your AI Configuration
 ```bash
-nano ~/.config/ai/config.py
+nano ~/.config/cxc/config.py
 ```
