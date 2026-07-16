@@ -1,7 +1,7 @@
 # CXC
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
-![Version](https://img.shields.io/badge/Version-v1.2.25.10-orange)
+![Version](https://img.shields.io/badge/Version-v1.2.25.11-orange)
 
 **📔INDONESIA**
 
